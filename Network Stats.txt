@@ -1,0 +1,8 @@
+itronsensors.com ipv6 - fd16:e8ac:e37c::1
+
+IoT Network
+ - SSID: 1010 = 4112 (base 10)
+ - PMR Static IP: 166.164.245.1
+
+ OWOC Network
+ - SSID:  = 
