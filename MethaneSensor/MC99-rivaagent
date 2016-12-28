@@ -1,0 +1,9 @@
+app rivaagent
+{
+    path     /etc/rivaagent/start-agent.sh
+    sysuser  root
+    sysgroup root
+    cmdline  start
+    runonce  1
+}
+

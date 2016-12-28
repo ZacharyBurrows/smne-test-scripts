@@ -1,0 +1,36 @@
+#!/bin/bash
+# NOTE: Whenever you do a "FactoryDataWriter" / "LoadMonitorInit" command pair, you must reboot
+# 		for changes to take effect.
+
+
+# -----------------------------
+# Change SSID
+# -----------------------------
+FactoryDataWriter --lid ILID_NGC_MAS_SSID eVTUnsigned16 <YOUR_DECIMAL_SSID_HERE>
+LoadMonitorInit
+#reboot
+
+
+# -----------------------------
+# Change from 11 to 64 Channels
+# -----------------------------
+# Change number of channels to 64
+FactoryDataWriter --lid ILID_NGC_RFPHY_NUM_OF_CHANNELS eVTUnsigned16 64
+LoadMonitorInit
+
+# Change channel mask to 64 channels (1 bit per channel)
+FactoryDataWriter --lid ILID_ACT_RFPHY_CHANNEL_MASK eVTString 0000000000000000FFFFFFFFFFFFFFFF
+LoadMonitorInit
+
+# Change starting frequency to 902400
+FactoryDataWriter --lid ILID_NGC_RFPHY_START_FREQ  eVTUnsigned32 902400
+LoadMonitorInit
+#reboot
+
+
+# -----------------------------
+# Disable header compression of 6lowpan 
+# -----------------------------
+FactoryDataWriter --lid ILID_ACT_ENABLE_6LOWPAN_HC eVTSigned32 0
+LoadMonitorInit
+reboot
